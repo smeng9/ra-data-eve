@@ -12,10 +12,6 @@ import {
   DELETE_MANY,
 } from "react-admin";
 
-const EventEmitter = require("events");
-
-export const myDataProviderEventEmitter = new EventEmitter();
-
 export const httpClient = (url, options = {}) => {
   options.credentials = "include";
   return fetchUtils.fetchJson(url, options);
@@ -105,9 +101,6 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
    */
   const convertHTTPResponse = (response, type, resource, params) => {
     let { headers, json } = response;
-    if (resource === "schemas" && (type === CREATE || type === UPDATE)) {
-      myDataProviderEventEmitter.emit("schema_update");
-    }
     switch (type) {
       case GET_LIST:
       case GET_MANY_REFERENCE:
