@@ -1,5 +1,7 @@
 # Eve Data Provider For React-Admin
 
+REST API Server: [PyEve](https://docs.python-eve.org/en/stable/)
+
 ## Installation
 
 ```sh
